@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.cimela.erestaurant</groupId>
+	<artifactId>root</artifactId>
+	<name>eRestaurant-root</name>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<developers>
+		<developer>
+			<id>cimela</id>
+			<name>Quyen Phan</name>
+			<email>quyen.it1423@gmail.com</email>
+		</developer>
+		<developer>
+			<id>Lam</id>
+			<name>Lam Ho</name>
+			<email>hotienlam@gmail.com</email>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- JDK version for building code -->
+		<jdk.version>1.8</jdk.version>
+		<jdk.path>${env.JAVA_HOME}</jdk.path>
+    
+		<!-- Bento Viet version for maven artifact -->
+		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
+    
+		<!-- use UFT-8 for source encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+		<!-- maven plugin -->
+		<maven-compiler.version>3.3</maven-compiler.version>
+		<maven-surefire.version>2.16</maven-surefire.version>
+		<emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
+    
+		<!-- spring core -->
+		<spring.version>5.0.8.RELEASE</spring.version>
+    
+		<!-- spring security -->
+		<spring-security.version>3.2.10.RELEASE</spring-security.version>
+		
+		<!-- mongodb -->
+    
+		<!-- log -->
+		<slf4j.version>1.7.25</slf4j.version>
+    
+		<!-- json -->
+		<jackson.version>2.9.6</jackson.version>
+		<json.simple.version>1.1.1</json.simple.version>
+	   
+		<!-- others  -->
+		<joda.time.version>2.10</joda.time.version>
+		
+		<maven-surefire.version>2.22.0</maven-surefire.version>
+		<maven-eclipse.version>2.10.0</maven-eclipse.version>
+		<maven-dependency.version>3.1.1</maven-dependency.version>
+		<frontend-maven.version>1.6</frontend-maven.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring dependencies -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+			<!-- others -->
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda.time.version}</version>
+			</dependency>
+			
+			<!-- Apache commons dependencies -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			
+			<!--  Jackson  -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse.version}</version>
+				<configuration>
+						<!-- Always download and attach dependencies source code -->
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
+					<wtpversion>2.0</wtpversion>
+			</configuration>
+		  </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<verbose>true</verbose>
+					<fork>true</fork>
+					<executable>${jdk.path}\bin\javac</executable>
+					<compilerVersion>${jdk.version}</compilerVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire.version}</version>
+				<configuration>
+					<failIfNoTests>false</failIfNoTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
