@@ -13,6 +13,7 @@ buildNumber.properties
 
 # for Eclipse
 .metadata
+RemoteSystemsTempFiles/
 bin/
 tmp/
 *.tmp
