@@ -22,16 +22,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- JDK version for building code -->
-		<jdk.version>1.8</jdk.version>
-		<jdk.path>${env.JAVA_HOME}</jdk.path>
-    
-		<!-- Bento Viet version for maven artifact -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		
+		<!-- e Restaurant version for maven artifact -->
 		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
-    
-		<!-- use UFT-8 for source encoding -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
+		
 		<!-- maven plugin -->
 		<maven-compiler.version>3.3</maven-compiler.version>
 		<maven-surefire.version>2.16</maven-surefire.version>
@@ -146,42 +142,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven-eclipse.version}</version>
-				<configuration>
-						<!-- Always download and attach dependencies source code -->
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
-					<wtpversion>2.0</wtpversion>
-			</configuration>
-		  </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler.version}</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<executable>${jdk.path}\bin\javac</executable>
-					<compilerVersion>${jdk.version}</compilerVersion>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire.version}</version>
-				<configuration>
-					<failIfNoTests>false</failIfNoTests>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
