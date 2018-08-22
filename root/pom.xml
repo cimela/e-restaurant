@@ -19,6 +19,13 @@
 			<email>hotienlam@gmail.com</email>
 		</developer>
 	</developers>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,32 +35,9 @@
 		<!-- e Restaurant version for maven artifact -->
 		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
 		
-		<!-- maven plugin -->
-		<maven-compiler.version>3.3</maven-compiler.version>
-		<maven-surefire.version>2.16</maven-surefire.version>
-		<emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
-    
-		<!-- spring core -->
-		<spring.version>5.0.8.RELEASE</spring.version>
-    
-		<!-- spring security -->
-		<spring-security.version>3.2.10.RELEASE</spring-security.version>
-		
-		<!-- mongodb -->
-    
-		<!-- log -->
-		<slf4j.version>1.7.25</slf4j.version>
-    
-		<!-- json -->
-		<jackson.version>2.9.6</jackson.version>
-		<json.simple.version>1.1.1</json.simple.version>
-	   
 		<!-- others  -->
 		<joda.time.version>2.10</joda.time.version>
 		
-		<maven-surefire.version>2.22.0</maven-surefire.version>
-		<maven-eclipse.version>2.10.0</maven-eclipse.version>
-		<maven-dependency.version>3.1.1</maven-dependency.version>
 		<frontend-maven.version>1.6</frontend-maven.version>
 	</properties>
 
@@ -61,41 +45,12 @@
 		<dependencies>
 			<!-- Spring dependencies -->
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-mongodb</artifactId>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-log4j</artifactId>
 			</dependency>
 			
 			<!-- others -->
@@ -103,37 +58,6 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda.time.version}</version>
-			</dependency>
-			
-			<!-- Apache commons dependencies -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			
-			<!--  Jackson  -->
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
 			</dependency>
 			
 		</dependencies>

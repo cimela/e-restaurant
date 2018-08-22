@@ -21,6 +21,7 @@
 	<modules>
         <module>framework</module>
         <module>component</module>
+		<module>frontend</module>
 		<module>appserver</module>
     </modules>
 	
