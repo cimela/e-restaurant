@@ -17,6 +17,7 @@
     <name>framework</name>
 
     <modules>
+		<module>model</module>
 		<!--<module>appserver</module>
 		<module>model</module>
 		<module>dbaccess</module>
