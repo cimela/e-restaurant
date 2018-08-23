@@ -37,6 +37,9 @@
 		<!-- e Restaurant version for maven artifact -->
 		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
 		
+		<commons.lang3.version>3.7</commons.lang3.version>
+		<commons.collections4.version>4.2</commons.collections4.version>
+		
 		<!-- others  -->
 		<joda.time.version>2.10</joda.time.version>
 		
@@ -45,6 +48,19 @@
 
 	<dependencyManagement>
 		<dependencies>
+		
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang3.version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons.collections4.version}</version>
+			</dependency>
 		
 			<!-- others -->
 			<dependency>
