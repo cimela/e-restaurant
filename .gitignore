@@ -23,6 +23,11 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.classpath
+.project
+.settings
+.externalToolBuilders
+.metadata
 .recommenders
 
 # External tool builders
