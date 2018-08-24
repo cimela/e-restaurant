@@ -8,7 +8,7 @@ This project is the one built as a sample of final solution where integrating Re
 ```
 mvn eclipse:eclipse
 ```
-3. If you want to execute the application, move to **appserver** project and run this command
+4. If you want to execute the application, move to **appserver** project and run this command
 ```
 mvn spring-boot:run
 ```
