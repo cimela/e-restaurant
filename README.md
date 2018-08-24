@@ -2,9 +2,16 @@
 This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
 
 ## How to use this project
-1. Ensure that all the required programs are available. Check the list of these programs at [here](https://github.com/cimela/e-restaurant/blob/master/README.md#requirements)
+1. Ensure that all the [required programs](https://github.com/cimela/e-restaurant/blob/master/README.md#requirements) are available.
 2. Build whole project with the corresponding [profile](https://github.com/cimela/e-restaurant/blob/master/README.md#profiles).
-
+3. Execute following command in other to generate the Eclipse configuration for all modules projects
+```
+mvn eclipse:eclipse
+```
+3. If you want to execute the application, move to **appserver** project and run this command
+```
+mvn spring-boot:run
+```
 
 ## Requirements
 These programs should be available to use this project  
