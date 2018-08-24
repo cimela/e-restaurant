@@ -1,5 +1,5 @@
 # e-Restaurant
-This project is the one built to apply our skills and knowledge which we've learnt
+This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
 
 ## How to use this project
 1. Ensure that all the required programs are available. Check the list of these programs at [here](https://github.com/cimela/e-restaurant/blob/master/README.md#requirements)
