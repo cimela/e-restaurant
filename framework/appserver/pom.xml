@@ -3,16 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>com.github.cimela.erestaurant</groupId>
-	<artifactId>eRestaurant</artifactId>
+	<artifactId>appserver-core</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	
-	<name>eRestaurant Webapp</name>
+	<name>appserver-core</name>
 	<url>http://maven.apache.org</url>
 	
 	<parent>
 		<groupId>com.github.cimela.erestaurant</groupId>
-		<artifactId>FreeToCode</artifactId>
+		<artifactId>framework</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	
@@ -27,33 +27,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+			
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons.collections4.version}</version>
+		</dependency>
 	</dependencies>
   
 	<build>
-		<finalName>eRestaurant</finalName>
-		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-resources</phase>
-						<configuration>
-							<target>
-								<copy todir="${project.build.directory}/classes/public">
-									<fileset dir="${project.basedir}/../frontend/build"/>
-								</copy>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
+				<configuration>
+					<layout>MODULE</layout>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

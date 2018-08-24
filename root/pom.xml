@@ -19,125 +19,54 @@
 			<email>hotienlam@gmail.com</email>
 		</developer>
 	</developers>
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- JDK version for building code -->
-		<jdk.version>1.8</jdk.version>
-		<jdk.path>${env.JAVA_HOME}</jdk.path>
-    
-		<!-- Bento Viet version for maven artifact -->
-		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
-    
-		<!-- use UFT-8 for source encoding -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
-		<!-- maven plugin -->
-		<maven-compiler.version>3.3</maven-compiler.version>
-		<maven-surefire.version>2.16</maven-surefire.version>
-		<emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
-    
-		<!-- spring core -->
-		<spring.version>5.0.8.RELEASE</spring.version>
-    
-		<!-- spring security -->
-		<spring-security.version>3.2.10.RELEASE</spring-security.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
 		
-		<!-- mongodb -->
-    
-		<!-- log -->
-		<slf4j.version>1.7.25</slf4j.version>
-    
-		<!-- json -->
-		<jackson.version>2.9.6</jackson.version>
-		<json.simple.version>1.1.1</json.simple.version>
-	   
+		<spring.boot.version>2.0.4.RELEASE</spring.boot.version>
+		
+		<!-- e Restaurant version for maven artifact -->
+		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
+		
+		<commons.lang3.version>3.7</commons.lang3.version>
+		<commons.collections4.version>4.2</commons.collections4.version>
+		
 		<!-- others  -->
 		<joda.time.version>2.10</joda.time.version>
 		
-		<maven-surefire.version>2.22.0</maven-surefire.version>
-		<maven-eclipse.version>2.10.0</maven-eclipse.version>
-		<maven-dependency.version>3.1.1</maven-dependency.version>
 		<frontend-maven.version>1.6</frontend-maven.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Spring dependencies -->
+		
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang3.version}</version>
 			</dependency>
 			
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons.collections4.version}</version>
 			</dependency>
-			
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			
+		
 			<!-- others -->
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda.time.version}</version>
-			</dependency>
-			
-			<!-- Apache commons dependencies -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			
-			<!--  Jackson  -->
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
 			</dependency>
 			
 		</dependencies>
@@ -146,42 +75,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>${maven-eclipse.version}</version>
-				<configuration>
-						<!-- Always download and attach dependencies source code -->
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-					<!-- Avoid type mvn eclipse:eclipse -Dwtpversion=2.0 -->
-					<wtpversion>2.0</wtpversion>
-			</configuration>
-		  </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler.version}</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<executable>${jdk.path}\bin\javac</executable>
-					<compilerVersion>${jdk.version}</compilerVersion>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire.version}</version>
-				<configuration>
-					<failIfNoTests>false</failIfNoTests>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
