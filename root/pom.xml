@@ -19,13 +19,6 @@
 			<email>hotienlam@gmail.com</email>
 		</developer>
 	</developers>
-	
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,32 +38,42 @@
 		
 		<frontend-maven.version>1.6</frontend-maven.version>
 	</properties>
-
+	
 	<dependencyManagement>
 		<dependencies>
-		
 			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>${commons.lang3.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<type>pom</type>
+				<version>${spring.boot.version}</version>
+				<scope>import</scope>
 			</dependency>
-			
-			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>${commons.collections4.version}</version>
-			</dependency>
-		
-			<!-- others -->
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time</artifactId>
-				<version>${joda.time.version}</version>
-			</dependency>
-			
 		</dependencies>
 	</dependencyManagement>
+
+	<dependencies>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons.collections4.version}</version>
+		</dependency>
+	
+		<!-- others -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda.time.version}</version>
+		</dependency>
+		
+	</dependencies>
 	
 	<build>
 		<plugins>
