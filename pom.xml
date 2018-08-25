@@ -32,6 +32,13 @@
 			</modules>
 		</profile>
 		<profile>
+			<id>frontend</id>
+			<modules>
+				<module>frontend</module>
+				<module>appserver</module>
+			</modules>
+		</profile>
+		<profile>
 			<id>default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
