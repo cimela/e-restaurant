@@ -3,6 +3,8 @@ package com.github.cimela.e.restaurant.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 public class GenericModel<ID extends Serializable> {
 
     public static final String ATTR_ID          = "_id";
@@ -12,6 +14,7 @@ public class GenericModel<ID extends Serializable> {
     public static final String ATTR_CREATE_USER = "createUser";
     public static final String ATTR_UPDATE_USER = "updateUser";
 
+    @Id
     private ID id;
 
     private Date createDate;
