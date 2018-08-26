@@ -1,6 +1,13 @@
 # e-Restaurant
 This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
 
+## Versions and Release Plan
+- Current version: v0.0.1 - Initial Stage 
+
+| #     | Name     | Description  | Status  |
+| :---: | :------: | :----------- | :----:  |
+| 1     | Init     | Build project structure with base code, prepare documents, conventions will be applied in this project and configure github | On-going |
+
 ## How to use this project
 1. Ensure that all the [required programs](https://github.com/cimela/e-restaurant/blob/master/README.md#requirements) are available.
 2. Build whole project with the corresponding [profile](https://github.com/cimela/e-restaurant/blob/master/README.md#profiles).
@@ -27,8 +34,8 @@ These programs should be available to use this project
 ## Profiles
 There are 2 kind of profiles to build this project
 + production: this build will provide the final product with all current source code.
-+ dev: this build will help developers reduce the project building time since only the related parts will be built.
-All following commands must be executed at the base folder
++ dev: this build will help developers reduce the project building time since only the related parts will be built.  
+**All following commands must be executed at the base folder**
 
 ### For production
 ```
@@ -39,7 +46,7 @@ mvn clean install -Pproduction
 ### For dev
 #### Front End
 ```
-mvn clean install -Pproduction
+mvn clean install -Pfrontend
 ```
 This command will re-build the front end part and integrate with the final product
 
@@ -48,3 +55,9 @@ This command will re-build the front end part and integrate with the final produ
 mvn clean install
 ```
 This command will re-build only the back end part with the final product.
+
+## Coordinators
+| #     | Members    | Email                  |
+| :---: | :--------: | :--------------------: |
+| 1     | Quyen Phan | quyen.it1423@gmail.com |
+| 2     | Lam Ho     | hotienlam@gmail.com    |
