@@ -1,5 +1,6 @@
 # e-Restaurant
 This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
+**All following commands must be executed at the base folder**
 
 ## Versions and Release Plan
 - Current version: v0.0.1 - Initial Stage 
@@ -24,18 +25,17 @@ mvn spring-boot:run
 These programs should be available to use this project  
 
 | #     | Programs | Version |
-| :---: | :------: | :-----: |
-| 1     | Java     | 1.8+    |
-| 2     | Maven    | 3.5.4+  |
-| 3     | NodeJS   | 8.11.4+ |
-| 4     | MongoDB  | 4.0.1   |
+| :---: | :------- | :-----: |
+| 1     | [Java](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)     | 1.8+    |
+| 2     | [Maven](https://maven.apache.org/download.cgi)    | 3.5.4+  |
+| 3     | [NodeJS](https://nodejs.org/en/download/)   | 8.11.4+ |
+| 4     | [MongoDB](https://www.mongodb.com/download-center#community)  | 4.0.1   |
 
 
 ## Profiles
 There are 2 kind of profiles to build this project
 + production: this build will provide the final product with all current source code.
 + dev: this build will help developers reduce the project building time since only the related parts will be built.  
-**All following commands must be executed at the base folder**
 
 ### For production
 ```
@@ -59,5 +59,5 @@ This command will re-build only the back end part with the final product.
 ## Coordinators
 | #     | Members    | Email                  |
 | :---: | :--------: | :--------------------: |
-| 1     | Quyen Phan | quyen.it1423@gmail.com |
-| 2     | Lam Ho     | hotienlam@gmail.com    |
+| 1     | [Quyen Phan](https://github.com/cimela) | quyen.it1423@gmail.com |
+| 2     | [Lam Ho](https://github.com/longkid)     | hotienlam@gmail.com    |
