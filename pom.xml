@@ -1,25 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	
-	<!-- move all properties & dependencies to /root/pom.xml -->
-    <groupId>com.github.cimela.erestaurant</groupId>
-    <artifactId>FreeToCode</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>e-Restaurant Spring - React Project</name>
-
 	<parent>
 		<groupId>com.github.cimela.erestaurant</groupId>
 		<artifactId>root</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>root/pom.xml</relativePath>
 	</parent>
-	
-	
-	
+
+	<groupId>com.github.cimela.erestaurant</groupId>
+	<artifactId>FreeToCode</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
 	<profiles>
 		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
 		<profile>
@@ -50,5 +47,4 @@
 			</modules>
 		</profile>
 	</profiles>
-	
 </project>
