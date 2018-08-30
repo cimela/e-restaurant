@@ -1,10 +1,17 @@
-package com.github.cimela.e.restaurant.model;
+package com.github.cimela.e.restaurant.base.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * Represent database object
+ * 
+ * @author Quyen Phan
+ *
+ * @param <ID> _id in database
+ */
 public class GenericModel<ID extends Serializable> {
 
     public static final String ATTR_ID          = "_id";

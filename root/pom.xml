@@ -55,6 +55,16 @@
 				<version>${spring.boot.version}</version>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>appserver</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -80,6 +90,22 @@
 			<version>${joda.time.version}</version>
 		</dependency>
 		
+		<!--
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>repo</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>web</artifactId>
+			<version>${project.version}</version>
+		</dependency>-->
 	</dependencies>
 	
 	<build>

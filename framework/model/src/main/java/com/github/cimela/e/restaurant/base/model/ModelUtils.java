@@ -1,10 +1,16 @@
-package com.github.cimela.e.restaurant.model;
+package com.github.cimela.e.restaurant.base.model;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 
+/**
+ * Convert objects with similar properties
+ * 
+ * @author Quyen Phan
+ *
+ */
 public class ModelUtils {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ModelUtils.class);

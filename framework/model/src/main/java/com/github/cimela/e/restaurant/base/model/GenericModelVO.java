@@ -1,5 +1,12 @@
-package com.github.cimela.e.restaurant.model;
+package com.github.cimela.e.restaurant.base.model;
 
+/**
+ * Base object used in server-client communication
+ * 
+ * @author Quyen Phan
+ *
+ * @param <T> database model
+ */
 public class GenericModelVO<T extends GenericModel<?>> {
 
     protected Class<T> modelClzz;
