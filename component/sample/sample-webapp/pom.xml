@@ -16,9 +16,5 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>sample-shared</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>sample-service</artifactId>
-		</dependency>
     </dependencies>
 </project>
