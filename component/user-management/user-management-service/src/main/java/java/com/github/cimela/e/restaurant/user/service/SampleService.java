@@ -27,7 +27,7 @@ public class SampleService extends AbstractComponentService<UserRequest, BaseRes
             break;
         case UPDATE:
         default:
-            if(request.getSample() != null) {
+            if(request.getUser() != null) {
                 response.setSuccess(true);
                 response.setData(new MessageObject(MSG_SAMPLE_SUCCESS));
             } else {

@@ -5,15 +5,14 @@ import com.github.cimela.e.restaurant.user.model.UserVO;
 
 public class UserRequest extends BaseRequest {
     
-    private UserVO sample;
+    private UserVO user;
 
-    public UserVO getSample() {
-        return sample;
+    public UserVO getUser() {
+        return user;
     }
 
-    public void setSample(UserVO sample) {
-        this.sample = sample;
+    public void setUser(UserVO user) {
+        this.user = user;
     }
-    
-    
+
 }
