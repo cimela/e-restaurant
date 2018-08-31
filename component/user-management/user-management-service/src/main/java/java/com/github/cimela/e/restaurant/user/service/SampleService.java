@@ -5,16 +5,16 @@ import com.github.cimela.e.restaurant.base.model.MessageObject;
 import com.github.cimela.e.restaurant.base.service.AbstractComponentService;
 import com.github.cimela.e.restaurant.user.appserver.UserRequest;
 import com.github.cimela.e.restaurant.user.model.UserVO;
+import com.github.cimela.e.restaurant.user.service.UserService;
 
-public class SampleService extends AbstractComponentService<UserRequest, BaseResponse> {
+public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseResponse> implements UserService {
 
-    protected static final String TARGET_SAMPLE = "sample";
     protected static final String MSG_SAMPLE_FAILED  = "sample.failed";
     protected static final String MSG_SAMPLE_SUCCESS = "sample.success";
     
     @Override
     public String getTarget() {
-        return TARGET_SAMPLE;
+        return TARGET_USER;
     }
 
     @Override
