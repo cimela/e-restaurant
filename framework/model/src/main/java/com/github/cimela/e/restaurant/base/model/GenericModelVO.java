@@ -1,5 +1,7 @@
 package com.github.cimela.e.restaurant.base.model;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 /**
  * Base object used in server-client communication
  * 
@@ -10,10 +12,18 @@ package com.github.cimela.e.restaurant.base.model;
 public class GenericModelVO<T extends GenericModel<?>> {
 
     protected Class<T> modelClzz;
+    protected String   id;
 
     public GenericModelVO(T model, Class<T> modelClzz, String... excludeAttrs) {
         this(modelClzz);
-        ModelUtils.copyProperties(model, this, excludeAttrs);
+        if(!ArrayUtils.contains(excludeAttrs, GenericModel.ATTR_ID_VALUE)) {
+            excludeAttrs = (String[]) ArrayUtils.add(excludeAttrs, new String[] {GenericModel.ATTR_ID_VALUE});
+            ModelUtils.copyProperties(model, this, excludeAttrs);
+            
+            this.id = String.valueOf(model.getId());
+        } else {
+            ModelUtils.copyProperties(model, this, excludeAttrs);
+        }
     }
 
     protected GenericModelVO(Class<T> modelClzz) {
