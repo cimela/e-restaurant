@@ -5,10 +5,10 @@ import com.github.cimela.e.restaurant.base.model.MessageObject;
 import com.github.cimela.e.restaurant.base.service.AbstractComponentService;
 import com.github.cimela.e.restaurant.sample.appserver.SampleRequest;
 import com.github.cimela.e.restaurant.sample.model.SampleVO;
+import com.github.cimela.e.restaurant.sample.service.SampleService;
 
-public class SampleService extends AbstractComponentService<SampleRequest, BaseResponse> {
+public class SampleServiceImpl extends AbstractComponentService<SampleRequest, BaseResponse> implements SampleService {
 
-    protected static final String TARGET_SAMPLE = "sample";
     protected static final String MSG_SAMPLE_FAILED  = "sample.failed";
     protected static final String MSG_SAMPLE_SUCCESS = "sample.success";
     

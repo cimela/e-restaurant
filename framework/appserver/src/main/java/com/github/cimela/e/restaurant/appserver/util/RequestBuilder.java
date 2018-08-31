@@ -1,5 +1,7 @@
 package com.github.cimela.e.restaurant.appserver.util;
 
+import java.net.URI;
+
 import org.springframework.data.domain.PageRequest;
 
 import com.github.cimela.e.restaurant.base.appserver.BaseRequest;
@@ -21,6 +23,11 @@ public class RequestBuilder<T extends BaseRequest> {
 
     public RequestBuilder<T> requestUri(String uri) {
         request.setTarget(RequestUtils.getTarget(uri));
+        return this;
+    }
+    
+    public RequestBuilder<T> requestUri(URI uri) {
+        request.setTarget(RequestUtils.getTarget(uri.getPath()));
         return this;
     }
 
