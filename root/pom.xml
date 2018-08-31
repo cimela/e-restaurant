@@ -34,18 +34,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		
-		<spring.boot.version>2.0.4.RELEASE</spring.boot.version>
-		
+			
 		<!-- e Restaurant version for maven artifact -->
 		<erestaurant.version>1.0-SNAPSHOT</erestaurant.version>
 		
-		<commons.lang3.version>3.7</commons.lang3.version>
 		<commons.collections4.version>4.2</commons.collections4.version>
 		
 		<!-- others  -->
-		<joda.time.version>2.10</joda.time.version>
-		
 		<frontend-maven.version>1.6</frontend-maven.version>
 	</properties>
 	
@@ -55,7 +50,13 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>${commons.lang3.version}</version>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 			
 			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
@@ -69,7 +70,7 @@
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>${joda.time.version}</version>
+				<version>${joda-time.version}</version>
 			</dependency>
 		
 			<!-- project dependencies -->
