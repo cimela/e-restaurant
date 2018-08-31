@@ -106,6 +106,21 @@
 				<version>${project.version}</version>
 			</dependency>
 			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>user-management-shared</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>user-management-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>user-management-webapp</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	
