@@ -3,13 +3,14 @@ package com.github.cimela.e.restaurant.appserver.util;
 import org.apache.commons.lang3.StringUtils;
 
 public class RequestUtils {
+    
     private static final String SERVER_API_PREFIX = "api";
     private static final String SERVER_PUBLIC_API_PREFIX = "public";
     
     /**
      * Get the service name from the uri
-     * The pattern must be api/{service}/...
-     * 
+     * The pattern must be api/{target}/...
+     * or api/public/{target}
      * @param uri
      * @return
      */

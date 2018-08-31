@@ -18,8 +18,7 @@
     <modules>
 		<module>model</module>
 		<module>appserver</module>
-		<!--<module>dbaccess</module>
-		<module>utils</module>-->
+		<!--<module>utils</module>-->
     </modules>
 	
 </project>

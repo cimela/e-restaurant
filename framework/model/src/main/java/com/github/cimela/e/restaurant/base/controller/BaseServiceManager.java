@@ -1,6 +1,5 @@
 package com.github.cimela.e.restaurant.base.controller;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,13 +22,13 @@ public abstract class BaseServiceManager {
 
     public BaseServiceManager(Collection<ComponentService<?, ?>> services) {
         for (ComponentService<?, ?> service : services) {
-            LOGGER.info("Register target for {}", String.valueOf(service.getTargets()));
-            Arrays.stream(service.getTargets()).forEach(target -> serviceReg.put(target, service));
+            LOGGER.info("Register service for {}", service.getTarget());
+            serviceReg.put(service.getTarget(), service);
         }
     }
 
     public void register(ComponentService<?, ?> service) {
-        LOGGER.info("Register {} services", service.getTargets().length);
-        Arrays.stream(service.getTargets()).forEach(target -> serviceReg.put(target, service));
+        LOGGER.info("Register service for {}", service.getTarget());
+        serviceReg.put(service.getTarget(), service);
     }
 }
