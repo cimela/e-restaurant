@@ -8,7 +8,7 @@ import com.github.cimela.e.restaurant.base.appserver.BaseRequest;
 import com.github.cimela.e.restaurant.base.appserver.RequestType;
 import com.github.cimela.e.restaurant.base.model.UserRole;
 
-public class RequestBuilder<T extends BaseRequest> {
+public class RequestBuilder<T extends BaseRequest<?>> {
 
     private T request;
 
@@ -16,7 +16,7 @@ public class RequestBuilder<T extends BaseRequest> {
         request = clazz.newInstance();
     }
 
-    public static <T extends BaseRequest> RequestBuilder<T> request(Class<T> clazz)
+    public static <T extends BaseRequest<?>> RequestBuilder<T> request(Class<T> clazz)
             throws InstantiationException, IllegalAccessException {
         return new RequestBuilder<T>(clazz);
     }

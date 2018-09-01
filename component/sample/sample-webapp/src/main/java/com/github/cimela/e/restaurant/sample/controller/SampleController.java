@@ -1,6 +1,7 @@
 package com.github.cimela.e.restaurant.sample.controller;
 
-import org.springframework.http.HttpRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,10 @@ import com.github.cimela.e.restaurant.sample.service.SampleService;
 public class SampleController extends BaseController {
 
     @GetMapping(path="/{name}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse findSample(HttpRequest request) throws InstantiationException, IllegalAccessException {
+    public BaseResponse findSample(HttpServletRequest request) throws InstantiationException, IllegalAccessException {
         SampleRequest sampleReq = RequestBuilder.request(SampleRequest.class)
                                               .requestType(RequestType.GET_ONE)
-                                              .requestUri(request.getURI())
+                                              .requestUri(request.getServletPath())
                                               .build();
         return serviceManager.handle(sampleReq);
     }
