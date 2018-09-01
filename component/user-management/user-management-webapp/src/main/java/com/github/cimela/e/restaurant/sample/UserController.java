@@ -12,7 +12,7 @@ import com.github.cimela.e.restaurant.user.appserver.UserRequest;
 import com.github.cimela.e.restaurant.user.service.UserService;
 
 @RestController
-@RequestMapping(UserService.TARGET_USER)
+@RequestMapping(BaseController.PREFIX_API + UserService.TARGET_USER)
 public class UserController extends BaseController {
 
     @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
