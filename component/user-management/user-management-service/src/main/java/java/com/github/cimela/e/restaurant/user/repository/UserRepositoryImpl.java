@@ -5,6 +5,11 @@ import org.bson.types.ObjectId;
 import com.github.cimela.e.restaurant.base.repository.BaseRepositoryImpl;
 import com.github.cimela.e.restaurant.user.model.User;
 
-public class UserRepositoryImpl extends BaseRepositoryImpl<User, ObjectId> {
+public class UserRepositoryImpl extends BaseRepositoryImpl<User, ObjectId> implements UserCustomRepository {
+
+    @Override
+    public void insert(User user) {
+        this.mongoTemplate.insert(user);
+    }
 
 }
