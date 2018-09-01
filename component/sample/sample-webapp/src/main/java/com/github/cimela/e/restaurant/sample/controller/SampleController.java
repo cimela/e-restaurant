@@ -14,7 +14,7 @@ import com.github.cimela.e.restaurant.sample.appserver.SampleRequest;
 import com.github.cimela.e.restaurant.sample.service.SampleService;
 
 @RestController
-@RequestMapping(SampleService.TARGET_SAMPLE)
+@RequestMapping(BaseController.PREFIX_API + SampleService.TARGET_SAMPLE)
 public class SampleController extends BaseController {
 
     @GetMapping(path="/{name}", produces= MediaType.APPLICATION_JSON_VALUE)
