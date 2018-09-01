@@ -19,6 +19,23 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         
+        <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>sample-webapp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>sample-service</artifactId>
+		</dependency>
+        
+        <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>user-management-webapp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>user-management-service</artifactId>
+		</dependency>
     </dependencies>
     
     

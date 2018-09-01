@@ -28,7 +28,7 @@ public class ServiceManager extends BaseServiceManager {
         super(services);
     }
 
-    public <T extends BaseRequest> BaseResponse handle(T request) {
+    public <T extends BaseRequest<?>> BaseResponse handle(T request) {
         if (request != null) {
             @SuppressWarnings("unchecked")
             ComponentService<T, BaseResponse> service = serviceReg.get(request.getTarget());

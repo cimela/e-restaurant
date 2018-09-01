@@ -1,5 +1,7 @@
 package java.com.github.cimela.e.restaurant.sample.service;
 
+import org.springframework.stereotype.Service;
+
 import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
 import com.github.cimela.e.restaurant.base.model.MessageObject;
 import com.github.cimela.e.restaurant.base.service.AbstractComponentService;
@@ -7,6 +9,7 @@ import com.github.cimela.e.restaurant.sample.appserver.SampleRequest;
 import com.github.cimela.e.restaurant.sample.model.SampleVO;
 import com.github.cimela.e.restaurant.sample.service.SampleService;
 
+@Service
 public class SampleServiceImpl extends AbstractComponentService<SampleRequest, BaseResponse> implements SampleService {
 
     protected static final String MSG_SAMPLE_FAILED  = "sample.failed";

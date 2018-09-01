@@ -10,10 +10,12 @@ import com.github.cimela.e.restaurant.base.appserver.RequestType;
 
 public abstract class BaseController {
     
+    public static final String PREFIX_API = "api/";
+    
     @Autowired
     protected ServiceManager serviceManager;
 
-    protected <T extends BaseRequest> BaseResponse findAllApi(HttpRequest request, Class<T> requestClass)
+    protected <T extends BaseRequest<?>> BaseResponse findAllApi(HttpRequest request, Class<T> requestClass)
             throws InstantiationException, IllegalAccessException {
         T serviceRequest = RequestBuilder.request(requestClass)
                                          .requestUri(request.getURI())
