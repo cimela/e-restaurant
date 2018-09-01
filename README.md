@@ -9,7 +9,7 @@ This project is the one built as a sample of final solution where integrating Re
 | :---: | :------: | :----------- | :----:  |
 | 1     | Init     | Build project structure with base code, prepare documents, conventions will be applied in this project and configure github | On-going |
 
-## How to use this project
+## How to start with this project
 1. Ensure that all the [required programs](https://github.com/cimela/e-restaurant/blob/master/README.md#requirements) are available.
 2. Build whole project with the corresponding [profile](https://github.com/cimela/e-restaurant/blob/master/README.md#profiles).
 3. Execute following command in other to generate the Eclipse configuration for all modules projects
@@ -55,6 +55,21 @@ This command will re-build the front end part and integrate with the final produ
 mvn clean install
 ```
 This command will re-build only the back end part with the final product.
+
+## How to run project
+Execute following command
+```
+java -jar appserver/target/eRestaurant.jar
+```
+
+## Database Details
+You can customize the database configuration at **appserver/src/main/resources/application.properties**    
+
+| #     | Info       | Details      |
+| :---: | :--------- | :----------- |
+| 1     | host       | localhost    |
+| 2     | port       | 27017        |
+| 3     | collection | e-restaurant |
 
 ## Coordinators
 | #     | Members    | Email                  |
