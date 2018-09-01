@@ -1,7 +1,8 @@
 package com.github.cimela.e.restaurant.appserver.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 
 import com.github.cimela.e.restaurant.appserver.util.RequestBuilder;
 import com.github.cimela.e.restaurant.base.appserver.BaseRequest;
@@ -15,10 +16,10 @@ public abstract class BaseController {
     @Autowired
     protected ServiceManager serviceManager;
 
-    protected <T extends BaseRequest<?>> BaseResponse findAllApi(HttpRequest request, Class<T> requestClass)
+    protected <T extends BaseRequest<?>> BaseResponse findAllApi(HttpServletRequest request, Class<T> requestClass)
             throws InstantiationException, IllegalAccessException {
         T serviceRequest = RequestBuilder.request(requestClass)
-                                         .requestUri(request.getURI())
+                                         .requestUri(request.getServletPath())
                                          .requestType(RequestType.GET_ALL).build();
         return serviceManager.handle(serviceRequest);
     }
