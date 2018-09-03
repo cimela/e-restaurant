@@ -1,4 +1,4 @@
-package java.com.github.cimela.e.restaurant.sample.repository;
+package com.github.cimela.e.restaurant.sample.repository;
 
 import org.bson.types.ObjectId;
 

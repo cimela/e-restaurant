@@ -1,4 +1,4 @@
-package java.com.github.cimela.e.restaurant.sample.service;
+package com.github.cimela.e.restaurant.sample.service;
 
 import org.springframework.stereotype.Service;
 
