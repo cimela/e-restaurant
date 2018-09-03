@@ -5,6 +5,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
@@ -101,6 +102,8 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             model.setCreateDate(new Date());
             
             userRepo.insert(model);
+        } catch(DuplicateKeyException e) {
+            throw new ServerException(new MessageObject(ERR_INSERT_USERNAME_DUPLICATED));
         } catch(Exception e) {
             throw new ServerException(new MessageObject(ERR_INSERT_FAILED));
         }

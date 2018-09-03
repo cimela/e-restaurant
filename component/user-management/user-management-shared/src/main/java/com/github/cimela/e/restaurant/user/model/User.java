@@ -17,14 +17,18 @@ public class User extends GenericModel<ObjectId> {
     public static final String ATTR_FIRST_NAME = "firstName";
     public static final String ATTR_LAST_NAME  = "lastName";
     public static final String ATTR_STATUS     = "status";
+    public static final String ATTR_EMAIL      = "email";
     
     @Indexed(unique = true)
     private String username;
+    
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
     
     private String firstName;
     private String lastName;
+    
+    private String email;
     
     private Status status = Status.ACTIVE;
     
@@ -66,6 +70,14 @@ public class User extends GenericModel<ObjectId> {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }
