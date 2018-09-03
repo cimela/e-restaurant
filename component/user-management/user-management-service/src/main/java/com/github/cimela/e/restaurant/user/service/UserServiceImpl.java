@@ -1,6 +1,7 @@
 package com.github.cimela.e.restaurant.user.service;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import com.github.cimela.e.restaurant.base.model.Status;
 import com.github.cimela.e.restaurant.base.service.AbstractComponentService;
 import com.github.cimela.e.restaurant.user.appserver.UserRequest;
 import com.github.cimela.e.restaurant.user.model.User;
+import com.github.cimela.e.restaurant.user.model.UserVO;
 import com.github.cimela.e.restaurant.user.repository.UserRepository;
 
 @Service
@@ -53,7 +55,9 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
 
     private BaseResponse findAllUsers(UserRequest request) {
         BaseResponse response = new BaseResponse();
-        response.setData(userRepo.findAllUsers());
+        response.setData(userRepo.findAllUsers().stream()
+                                                .map(user -> new UserVO(user))
+                                                .collect(Collectors.toList()));
         return response;
     }
 
