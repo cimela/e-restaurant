@@ -59,7 +59,11 @@ This command will re-build only the back end part with the final product.
 ## How to run project
 Execute following command
 ```
-java -jar appserver/target/eRestaurant.jar
+java -jar main-app/target/eRestaurant.jar
+```
+For debugging, execute following command and the debug port is **8000**
+```
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -jar main-app/target/eRestaurant.jar
 ```
 
 ## Database Details
