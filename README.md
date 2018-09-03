@@ -16,7 +16,7 @@ This project is the one built as a sample of final solution where integrating Re
 ```
 mvn eclipse:eclipse
 ```
-4. If you want to execute the application, move to **appserver** project and run this command
+4. If you want to execute the application, move to **main-app** project and run this command
 ```
 mvn spring-boot:run
 ```
@@ -63,7 +63,7 @@ java -jar appserver/target/eRestaurant.jar
 ```
 
 ## Database Details
-You can customize the database configuration at **appserver/src/main/resources/application.properties**    
+You can customize the database configuration at **main-app/src/main/resources/application.properties**    
 
 | #     | Info       | Details      |
 | :---: | :--------- | :----------- |
