@@ -12,8 +12,8 @@ public class UserVO extends GenericModelVO<User> {
         super(User.class);
     }
 
-    public UserVO(User sample, String... excludeAttrs) {
-        super(sample, User.class, excludeAttrs);
+    public UserVO(User user, String... excludeAttrs) {
+        super(user, User.class, excludeAttrs);
     }
 
     public String getUsername() {
