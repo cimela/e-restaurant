@@ -25,14 +25,14 @@
 				<module>framework</module>
 				<module>component</module>
 				<module>frontend</module>
-				<module>appserver</module>
+				<module>main-app</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>frontend</id>
 			<modules>
 				<module>frontend</module>
-				<module>appserver</module>
+				<module>main-app</module>
 			</modules>
 		</profile>
 		<profile>
@@ -43,7 +43,7 @@
 			<modules>
 				<module>framework</module>
 				<module>component</module>
-				<module>appserver</module>
+				<module>main-app</module>
 			</modules>
 		</profile>
 	</profiles>
