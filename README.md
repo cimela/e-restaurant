@@ -2,6 +2,14 @@
 This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
 **All following commands must be executed at the base folder**
 
+## Why do we use this project structure?
+We have been applied this project structure in several projects and there some benefits from using it:
+1. Be able to extend and develop new features/functions at init new functions *easily* in *short time*.
+2. Can adapt new database in project with similar functions.
+3. Easy to manipulate the number of functions when providing the production for client.
+4. Migrate from component-based web application to micro-services system with few changes at framework layer itself.
+5. Avoid the conflict in code when working in team.
+
 ## Versions and Release Plan
 - Current version: v0.0.1 - Initial Stage 
 
