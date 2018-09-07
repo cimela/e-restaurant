@@ -63,7 +63,12 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
 
     private BaseResponse findUser(UserRequest request) {
         BaseResponse response = new BaseResponse();
-        response.setData(userRepo.findByUsername(request.getUser().getUsername()));
+        User user = userRepo.findByUsername(request.getUser().getUsername());
+        if(user != null) {
+            response.setData(new UserVO(user));
+        } else {
+            throw new ServerException(new MessageObject(ERR_USERNAME_NOT_FOUND, request.getUser().getUsername()));
+        }
         return response;
     }
 
@@ -75,7 +80,7 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             String username = request.getUser().getUsername();
             userRepo.updateUserStatus(username, Status.DEACTIVE);
         } catch(Exception e) {
-            throw new ServerException(new MessageObject(ERR_DELETE_FAILED));
+            throw new ServerException(new MessageObject(ERR_DELETE_FAILED), e);
         }
         
         return response;
@@ -91,7 +96,7 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             
             userRepo.update(model);
         } catch(Exception e) {
-            throw new ServerException(new MessageObject(ERR_UPDATE_FAILED));
+            throw new ServerException(new MessageObject(ERR_UPDATE_FAILED), e);
         }
         
         return response;
@@ -107,9 +112,9 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             
             userRepo.insert(model);
         } catch(DuplicateKeyException e) {
-            throw new ServerException(new MessageObject(ERR_INSERT_USERNAME_DUPLICATED));
+            throw new ServerException(new MessageObject(ERR_INSERT_USERNAME_DUPLICATED), e);
         } catch(Exception e) {
-            throw new ServerException(new MessageObject(ERR_INSERT_FAILED));
+            throw new ServerException(new MessageObject(ERR_INSERT_FAILED), e);
         }
         
         return response;
