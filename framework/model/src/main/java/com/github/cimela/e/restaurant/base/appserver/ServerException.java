@@ -12,7 +12,12 @@ public class ServerException extends RuntimeException {
     private MessageObject messageObject;
     
     public ServerException(MessageObject messageObject) {
-        super();
+        super(messageObject.getMessageCode());
+        this.messageObject = messageObject;
+    }
+    
+    public ServerException(MessageObject messageObject, Exception rootCause) {
+        super(messageObject.getMessageCode(), rootCause);
         this.messageObject = messageObject;
     }
 

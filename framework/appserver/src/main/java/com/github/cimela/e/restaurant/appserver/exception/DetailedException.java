@@ -18,6 +18,11 @@ public class DetailedException extends ServerException {
         super(messageObject);
         this.status = status;
     }
+    
+    public DetailedException(MessageObject messageObject, HttpStatus status, Exception rootCause) {
+        super(messageObject, rootCause);
+        this.status = status;
+    }
 
     public HttpStatus getStatus() {
         return status;

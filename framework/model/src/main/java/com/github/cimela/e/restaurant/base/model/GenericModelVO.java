@@ -17,7 +17,7 @@ public class GenericModelVO<T extends GenericModel<?>> {
     public GenericModelVO(T model, Class<T> modelClzz, String... excludeAttrs) {
         this(modelClzz);
         if(!ArrayUtils.contains(excludeAttrs, GenericModel.ATTR_ID_VALUE)) {
-            excludeAttrs = (String[]) ArrayUtils.add(excludeAttrs, new String[] {GenericModel.ATTR_ID_VALUE});
+            excludeAttrs = (String[]) ArrayUtils.addAll(excludeAttrs, new String[] {GenericModel.ATTR_ID_VALUE});
             ModelUtils.copyProperties(model, this, excludeAttrs);
             
             this.id = String.valueOf(model.getId());

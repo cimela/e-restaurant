@@ -8,6 +8,6 @@ import com.github.cimela.e.restaurant.user.model.User;
 
 public interface UserCustomRepository extends BaseCustomRepository<User, ObjectId> {
     void insert(User user);
-    void update(User model);
-    void updateUserStatus(String username, Status status);
+    long update(User model);
+    long updateUserStatus(String username, Status status);
 }
