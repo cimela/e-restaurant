@@ -1,5 +1,5 @@
 # e-Restaurant
-This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB
+This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB    
 **All following commands must be executed at the base folder**
 
 ## Why do we use this project structure?
@@ -84,7 +84,7 @@ You can customize the database configuration at **main-app/src/main/resources/ap
 | 3     | collection | e-restaurant |
 
 ## Coordinators
-| #     | Members    | Email                  |
-| :---: | :--------: | :--------------------: |
-| 1     | [Quyen Phan](https://github.com/cimela) | quyen.it1423@gmail.com |
+| #     | Members                                  | Email                  |
+| :---: | :--------------------------------------: | :--------------------: |
+| 1     | [Quyen Phan](https://github.com/cimela)  | quyen.it1423@gmail.com |
 | 2     | [Lam Ho](https://github.com/longkid)     | hotienlam@gmail.com    |
