@@ -1,6 +1,7 @@
 package com.github.cimela.e.restaurant.user.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
@@ -18,7 +20,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 import org.springframework.dao.DuplicateKeyException;
 
 import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
@@ -169,6 +173,7 @@ public class UserServiceImplTest {
     @Test
     public void testRegister() {
         String username = "John";
+        ObjectId id     = new ObjectId();
 
         UserVO userVO = new UserVO();
         userVO.setUsername(username);
@@ -182,14 +187,26 @@ public class UserServiceImplTest {
         request.setType(RequestType.CREATE);
         request.setUser(userVO);
         
+        Mockito.doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                User user = invocation.getArgument(0);
+                user.setId(id);
+                return null;
+            }
+        }).when(userRepo).insert(Mockito.any(User.class));
+        
         BaseResponse actualResponse = userService.handle(request);
-        MessageObject data = (MessageObject) actualResponse.getData();
         
         Mockito.verify(userRepo, Mockito.times(1)).insert(argumentCaptor.capture());
         User user = argumentCaptor.getValue();
+        assertEquals(username, user.getUsername());
+        
+        MessageObject data = (MessageObject) actualResponse.getData();
         assertTrue(actualResponse.isSuccess());
         assertEquals(UserMessages.MSG_INSERT_SUCCESS, data.getMessageCode());
-        assertEquals(username, user.getUsername());
+        assertEquals(1, data.getParams().length);
+        assertSame(id, data.getParams()[0]);
+
     }
     
     @Test
@@ -208,5 +225,53 @@ public class UserServiceImplTest {
         request.setUser(userVO);
         
         userService.handle(request);
+    }
+    
+    @Test
+    public void testModified_Missing() {
+        String username = "John";
+        exceptionRule.expect(ServerException.class);
+        exceptionRule.expectMessage(UserMessages.ERR_USER_NOT_FOUND);
+        
+        Mockito.when(userRepo.update(Mockito.any())).thenReturn(0L);
+
+        UserVO userVO = new UserVO();
+        userVO.setUsername(username);
+        
+        request.setType(RequestType.UPDATE);
+        request.setUser(userVO);
+        
+        userService.handle(request);
+    }
+    
+    @Test
+    public void testModified() {
+        String username  = "John";
+        String firstName = "First";
+        String lastName  = "Last";
+        ArgumentCaptor<User> argCapture = ArgumentCaptor.forClass(User.class);
+        
+        UserVO userVO = new UserVO();
+        userVO.setUsername(username);
+        userVO.setFirstName(firstName);
+        userVO.setLastName(lastName);
+        
+        request.setType(RequestType.UPDATE);
+        request.setUser(userVO);
+        
+        Mockito.when(userRepo.update(Mockito.isA(User.class))).thenReturn(1L);
+        
+        BaseResponse response = userService.handle(request);
+        
+        Mockito.verify(userRepo, Mockito.times(1)).update(argCapture.capture());
+        
+        MessageObject message = (MessageObject) response.getData();
+        assertTrue(response.isSuccess());
+        assertEquals(UserMessages.MSG_UPDATE_SUCCESS, message.getMessageCode());
+        
+        User value = argCapture.getValue();
+        assertEquals(username, value.getUsername());
+        assertEquals(firstName, value.getFirstName());
+        assertEquals(lastName, value.getLastName());
     }
 }

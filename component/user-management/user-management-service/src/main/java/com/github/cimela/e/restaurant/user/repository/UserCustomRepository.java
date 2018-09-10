@@ -7,7 +7,7 @@ import com.github.cimela.e.restaurant.base.repository.BaseCustomRepository;
 import com.github.cimela.e.restaurant.user.model.User;
 
 public interface UserCustomRepository extends BaseCustomRepository<User, ObjectId> {
-    void insert(User user);
+    ObjectId insert(User user);
     long update(User model);
     long updateUserStatus(String username, Status status);
 }

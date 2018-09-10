@@ -78,7 +78,9 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
         
         try {
             String username = request.getUser().getUsername();
-            userRepo.updateUserStatus(username, Status.DEACTIVE);
+            if(userRepo.updateUserStatus(username, Status.DEACTIVE) < 1) {
+                throw new ServerException(new MessageObject(ERR_USER_NOT_FOUND));
+            }
         } catch(Exception e) {
             throw new ServerException(new MessageObject(ERR_DELETE_FAILED), e);
         }
@@ -94,7 +96,12 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             User model = request.getUser().toModel();
             model.setUpdateDate(new Date());
             
-            userRepo.update(model);
+            if(userRepo.update(model) < 1) {
+                throw new ServerException(new MessageObject(ERR_USER_NOT_FOUND));
+            }
+            
+        } catch (ServerException e) {
+            throw e;
         } catch(Exception e) {
             throw new ServerException(new MessageObject(ERR_UPDATE_FAILED), e);
         }
@@ -104,13 +111,13 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
 
     private BaseResponse registerUser(UserRequest request) {
         BaseResponse response = new BaseResponse();
-        response.setData(new MessageObject(MSG_INSERT_SUCCESS));
         
         try {
             User model = request.getUser().toModel();
             model.setCreateDate(new Date());
             
             userRepo.insert(model);
+            response.setData(new MessageObject(MSG_INSERT_SUCCESS, model.getId()));
         } catch(DuplicateKeyException e) {
             throw new ServerException(new MessageObject(ERR_INSERT_USERNAME_DUPLICATED), e);
         } catch(Exception e) {
