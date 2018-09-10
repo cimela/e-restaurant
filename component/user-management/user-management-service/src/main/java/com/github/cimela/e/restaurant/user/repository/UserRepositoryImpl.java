@@ -13,8 +13,9 @@ import com.mongodb.client.result.UpdateResult;
 public class UserRepositoryImpl extends BaseRepositoryImpl<User, ObjectId> implements UserCustomRepository {
 
     @Override
-    public void insert(User user) {
+    public ObjectId insert(User user) {
         this.mongoTemplate.insert(user);
+        return user.getId();
     }
 
     @Override

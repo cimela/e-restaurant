@@ -5,6 +5,7 @@ import com.github.cimela.e.restaurant.base.service.CommonMessages;
 public interface UserMessages extends CommonMessages {
     
     static final String ERR_USERNAME_NOT_FOUND         = "user.username.not.found";
+    static final String ERR_USER_NOT_FOUND             = "user.user.not.found";
     static final String ERR_INSERT_FAILED              = "user.insert.failed";
     static final String ERR_INSERT_USERNAME_DUPLICATED = "user.insert.username.duplicated";
     static final String ERR_UPDATE_FAILED              = "user.update.failed";
