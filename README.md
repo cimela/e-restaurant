@@ -2,6 +2,22 @@
 This project is the one built as a sample of final solution where integrating React, Spring-Boot and MongoDB    
 **All following commands must be executed at the base folder**
 
+Table of Contents
+=================
+
+  * [Why do we use this project structure?](#why-do-we-use-this-project-structure)
+  * [Versions and Release Plan](#versions-and-release-plan)
+  * [How to start with this project](#how-to-start-with-this-project)
+  * [Requirements](#requirements)
+  * [Profiles](#profiles)
+    * [For production](#for-production)
+    * [For dev](#for-dev)
+      * [Front End](#front-end)
+      * [Back End](#back-end)
+  * [How to run project](#how-to-run-project)
+  * [Database Details](#database-details)
+  * [Coordinators](#coordinators)
+
 ## Why do we use this project structure?
 We have been applied this project structure in several projects and there some benefits from using it:
 1. Be able to extend and develop new features/functions at init new functions *easily* in *short time*.
