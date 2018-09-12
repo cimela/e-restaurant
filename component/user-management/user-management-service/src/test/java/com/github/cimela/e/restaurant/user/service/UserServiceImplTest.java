@@ -29,6 +29,7 @@ import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
 import com.github.cimela.e.restaurant.base.appserver.RequestType;
 import com.github.cimela.e.restaurant.base.appserver.ServerException;
 import com.github.cimela.e.restaurant.base.model.MessageObject;
+import com.github.cimela.e.restaurant.base.model.Status;
 import com.github.cimela.e.restaurant.user.appserver.UserRequest;
 import com.github.cimela.e.restaurant.user.model.User;
 import com.github.cimela.e.restaurant.user.model.UserVO;
@@ -273,5 +274,45 @@ public class UserServiceImplTest {
         assertEquals(username, value.getUsername());
         assertEquals(firstName, value.getFirstName());
         assertEquals(lastName, value.getLastName());
+    }
+    
+    @Test
+    public void testDelete() {
+        String username  = "John";
+        
+        UserVO userVO = new UserVO();
+        userVO.setUsername(username);
+        
+        request.setType(RequestType.DELETE);
+        request.setUser(userVO);
+        
+        Mockito.when(userRepo.updateUserStatus(username, Status.DEACTIVE)).thenReturn(1L);
+        
+        BaseResponse response = userService.handle(request);
+        
+        Mockito.verify(userRepo, Mockito.times(1)).updateUserStatus(username, Status.DEACTIVE);
+        
+        MessageObject message = (MessageObject) response.getData();
+        assertTrue(response.isSuccess());
+        assertEquals(UserMessages.MSG_DELETE_SUCCESS, message.getMessageCode());
+    }
+    
+    @Test
+    public void testDelete_Missing() {
+        String username  = "John";
+        
+        exceptionRule.expect(ServerException.class);
+        exceptionRule.expectMessage(UserMessages.ERR_USER_NOT_FOUND);
+        
+        UserVO userVO = new UserVO();
+        userVO.setUsername(username);
+        
+        request.setType(RequestType.DELETE);
+        request.setUser(userVO);
+        
+        Mockito.when(userRepo.updateUserStatus(Mockito.anyString(), Mockito.any(Status.class))).thenReturn(1L);
+        Mockito.when(userRepo.updateUserStatus(username, Status.DEACTIVE)).thenReturn(0L);
+        
+        userService.handle(request);
     }
 }
