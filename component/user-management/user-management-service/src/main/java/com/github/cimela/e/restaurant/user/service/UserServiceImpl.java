@@ -74,13 +74,15 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
 
     private BaseResponse deactiveUser(UserRequest request) {
         BaseResponse response = new BaseResponse();
-        response.setData(new MessageObject(MSG_UPDATE_SUCCESS));
+        response.setData(new MessageObject(MSG_DELETE_SUCCESS));
         
         try {
             String username = request.getUser().getUsername();
             if(userRepo.updateUserStatus(username, Status.DEACTIVE) < 1) {
                 throw new ServerException(new MessageObject(ERR_USER_NOT_FOUND));
             }
+        } catch (ServerException e) {
+            throw e;
         } catch(Exception e) {
             throw new ServerException(new MessageObject(ERR_DELETE_FAILED), e);
         }
