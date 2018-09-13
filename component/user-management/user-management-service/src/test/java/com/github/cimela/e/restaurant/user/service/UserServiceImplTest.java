@@ -1,7 +1,6 @@
 package com.github.cimela.e.restaurant.user.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -206,7 +205,7 @@ public class UserServiceImplTest {
         assertTrue(actualResponse.isSuccess());
         assertEquals(UserMessages.MSG_INSERT_SUCCESS, data.getMessageCode());
         assertEquals(1, data.getParams().length);
-        assertSame(id, data.getParams()[0]);
+        assertEquals(id.toString(), data.getParams()[0]);
 
     }
     

@@ -7,6 +7,7 @@ public class UserVO extends GenericModelVO<User> {
     private String username;
     private String firstName;
     private String lastName;
+    private String email;
 
     public UserVO() {
         super(User.class);
@@ -38,6 +39,14 @@ public class UserVO extends GenericModelVO<User> {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }
