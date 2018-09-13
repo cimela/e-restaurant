@@ -119,7 +119,7 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
             model.setCreateDate(new Date());
             
             userRepo.insert(model);
-            response.setData(new MessageObject(MSG_INSERT_SUCCESS, model.getId()));
+            response.setData(new MessageObject(MSG_INSERT_SUCCESS, model.getId().toString()));
         } catch(DuplicateKeyException e) {
             throw new ServerException(new MessageObject(ERR_INSERT_USERNAME_DUPLICATED), e);
         } catch(Exception e) {
