@@ -5,7 +5,7 @@ import java.util.List;
 import com.github.cimela.e.restaurant.base.model.GenericModelVO;
 
 public class ListResponse<T extends GenericModelVO<?>> {
-    private int total = -1;
+    private long total = -1;
     private List<T> data;
 
     public ListResponse() {
@@ -17,17 +17,17 @@ public class ListResponse<T extends GenericModelVO<?>> {
         this.data = data;
     }
 
-    public ListResponse(int total, List<T> data) {
+    public ListResponse(long total, List<T> data) {
         super();
         this.total = total;
         this.data = data;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 

@@ -55,9 +55,10 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
     }
 
     private BaseResponse findAllUsers(UserRequest request) {
-        ListResponse<UserVO> list = new ListResponse<>(userRepo.findAllUsers().stream()
-                                                                              .map(UserVO::new)
-                                                                              .collect(Collectors.toList()));
+        ListResponse<UserVO> list = new ListResponse<>(userRepo.count(), userRepo.findAllUsers().stream()
+                                                                                 .map(UserVO::new)
+                                                                                 .collect(Collectors.toList()));
+        
         BaseResponse response = new BaseResponse();
         response.setData(list);
         
