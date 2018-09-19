@@ -19,4 +19,7 @@ public interface UserRepository extends BaseRepository<User, ObjectId>, UserCust
     
     @Query(value="{'username': ?0, 'password': ?0, 'status':'ACTIVE'}")
     User findByUsernameAndPassword(String username, String password);
+    
+    @Query(count=true, value="{'status':'ACTIVE'}")
+    long count();
 }

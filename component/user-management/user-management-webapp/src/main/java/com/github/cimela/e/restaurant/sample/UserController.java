@@ -69,8 +69,8 @@ public class UserController extends BaseController {
     }
     
     @DeleteMapping(path="/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
-    public MessageObject deactiveUser(HttpServletRequest request, @PathVariable String username, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
-        
+    public MessageObject deactiveUser(HttpServletRequest request, @PathVariable String username) throws InstantiationException, IllegalAccessException {
+        UserVO user = new UserVO();
         user.setUsername(username);
         
         UserRequest usrReq = RequestBuilder.request(UserRequest.class)
