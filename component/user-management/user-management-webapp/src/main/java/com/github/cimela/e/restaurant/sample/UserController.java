@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.cimela.e.restaurant.appserver.controller.BaseController;
 import com.github.cimela.e.restaurant.appserver.util.RequestBuilder;
-import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
+import com.github.cimela.e.restaurant.base.appserver.ListResponse;
 import com.github.cimela.e.restaurant.base.appserver.RequestType;
+import com.github.cimela.e.restaurant.base.model.MessageObject;
 import com.github.cimela.e.restaurant.user.appserver.UserRequest;
 import com.github.cimela.e.restaurant.user.model.UserVO;
 import com.github.cimela.e.restaurant.user.service.UserService;
@@ -25,12 +26,12 @@ import com.github.cimela.e.restaurant.user.service.UserService;
 public class UserController extends BaseController {
 
     @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse findUsers(HttpServletRequest request) throws InstantiationException, IllegalAccessException {
+    public ListResponse<UserVO> findUsers(HttpServletRequest request) throws InstantiationException, IllegalAccessException {
         return findAllApi(request, UserRequest.class);
     }
     
     @GetMapping(path="/{username}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse findUser(HttpServletRequest request, @PathVariable String username) throws InstantiationException, IllegalAccessException {
+    public UserVO findUser(HttpServletRequest request, @PathVariable String username) throws InstantiationException, IllegalAccessException {
         UserRequest usrReq = RequestBuilder.request(UserRequest.class)
                                            .requestUri(request.getServletPath())
                                            .requestType(RequestType.GET_ONE)
@@ -43,7 +44,7 @@ public class UserController extends BaseController {
     }
     
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse registerUser(HttpServletRequest request, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
+    public MessageObject registerUser(HttpServletRequest request, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
         UserRequest usrReq = RequestBuilder.request(UserRequest.class)
                                            .requestUri(request.getServletPath())
                                            .requestType(RequestType.CREATE)
@@ -54,7 +55,10 @@ public class UserController extends BaseController {
     }
     
     @PutMapping(path="/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse updateUserInfo(HttpServletRequest request, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
+    public MessageObject updateUserInfo(HttpServletRequest request, @PathVariable String username, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
+
+        user.setUsername(username);
+        
         UserRequest usrReq = RequestBuilder.request(UserRequest.class)
                                            .requestUri(request.getServletPath())
                                            .requestType(RequestType.UPDATE)
@@ -65,7 +69,10 @@ public class UserController extends BaseController {
     }
     
     @DeleteMapping(path="/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces= MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse deactiveUser(HttpServletRequest request, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
+    public MessageObject deactiveUser(HttpServletRequest request, @PathVariable String username, @RequestBody UserVO user) throws InstantiationException, IllegalAccessException {
+        
+        user.setUsername(username);
+        
         UserRequest usrReq = RequestBuilder.request(UserRequest.class)
                                            .requestUri(request.getServletPath())
                                            .requestType(RequestType.DELETE)

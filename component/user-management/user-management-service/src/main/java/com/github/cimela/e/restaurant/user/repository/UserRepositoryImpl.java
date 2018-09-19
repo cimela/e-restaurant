@@ -23,7 +23,8 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<User, ObjectId> imple
         Query query = Query.query(Criteria.where(User.ATTR_USERNAME).is(model.getUsername()));
         Update update = new Update();
         update.set(User.ATTR_FIRST_NAME, model.getFirstName());
-        update.set(User.ATTR_LAST_NAME, model.getFirstName());
+        update.set(User.ATTR_LAST_NAME,  model.getLastName());
+        update.set(User.ATTR_EMAIL,      model.getEmail());
         
         UpdateResult result = this.mongoTemplate.updateFirst(query , update, User.class);
         return result.getMatchedCount();

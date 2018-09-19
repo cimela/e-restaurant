@@ -10,6 +10,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
+import com.github.cimela.e.restaurant.base.appserver.ListResponse;
 import com.github.cimela.e.restaurant.base.appserver.ServerException;
 import com.github.cimela.e.restaurant.base.model.MessageObject;
 import com.github.cimela.e.restaurant.base.model.Status;
@@ -54,10 +55,12 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
     }
 
     private BaseResponse findAllUsers(UserRequest request) {
+        ListResponse<UserVO> list = new ListResponse<>(userRepo.findAllUsers().stream()
+                                                                              .map(UserVO::new)
+                                                                              .collect(Collectors.toList()));
         BaseResponse response = new BaseResponse();
-        response.setData(userRepo.findAllUsers().stream()
-                                                .map(user -> new UserVO(user))
-                                                .collect(Collectors.toList()));
+        response.setData(list);
+        
         return response;
     }
 

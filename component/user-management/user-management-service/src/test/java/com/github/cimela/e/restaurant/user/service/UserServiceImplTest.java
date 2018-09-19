@@ -25,6 +25,7 @@ import org.mockito.stubbing.Answer;
 import org.springframework.dao.DuplicateKeyException;
 
 import com.github.cimela.e.restaurant.base.appserver.BaseResponse;
+import com.github.cimela.e.restaurant.base.appserver.ListResponse;
 import com.github.cimela.e.restaurant.base.appserver.RequestType;
 import com.github.cimela.e.restaurant.base.appserver.ServerException;
 import com.github.cimela.e.restaurant.base.model.MessageObject;
@@ -99,8 +100,9 @@ public class UserServiceImplTest {
         
         Mockito.when(userRepo.findAllUsers()).thenReturn(userList);
         
-        BaseResponse actualResponse = userService.handle(request);
-        List<UserVO> actualUserList = (List<UserVO>) actualResponse.getData();
+        BaseResponse actualResponse       = userService.handle(request);
+        ListResponse<UserVO> listResponse = (ListResponse<UserVO>) actualResponse.getData();
+        List<UserVO> actualUserList       = listResponse.getData();
         
         assertEquals(response.isSuccess(), actualResponse.isSuccess());
         assertEquals(userList.size(), actualUserList.size());
@@ -126,8 +128,9 @@ public class UserServiceImplTest {
         
         Mockito.when(userRepo.findAllUsers()).thenReturn(userList);
         
-        BaseResponse actualResponse = userService.handle(request);
-        List<UserVO> actualUserList = (List<UserVO>) actualResponse.getData();
+        BaseResponse actualResponse       = userService.handle(request);
+        ListResponse<UserVO> listResponse = (ListResponse<UserVO>) actualResponse.getData();
+        List<UserVO> actualUserList       = listResponse.getData();
         
         assertEquals(response.isSuccess(), actualResponse.isSuccess());
         assertEquals(userList.size(), actualUserList.size());
