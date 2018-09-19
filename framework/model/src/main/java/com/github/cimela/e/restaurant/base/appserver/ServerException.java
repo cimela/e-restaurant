@@ -16,7 +16,7 @@ public class ServerException extends RuntimeException {
         this.messageObject = messageObject;
     }
     
-    public ServerException(MessageObject messageObject, Exception rootCause) {
+    public ServerException(MessageObject messageObject, Throwable rootCause) {
         super(messageObject.getMessageCode(), rootCause);
         this.messageObject = messageObject;
     }

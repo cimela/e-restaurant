@@ -3,3 +3,8 @@ spring:
     mongodb:
       host: localhost
       port: 27017
+      
+web:
+  core-pool-size: 50
+  maximum-pool-size: 1000
+  keep-alive-time: 5
