@@ -2,9 +2,7 @@ package com.github.cimela.e.restaurant.appserver.controller;
 
 import java.util.Collection;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.async.WebAsyncTask;
 
 import com.github.cimela.e.restaurant.appserver.config.WebConfig;
 import com.github.cimela.e.restaurant.base.appserver.BaseRequest;
@@ -33,6 +32,7 @@ public class ServiceManager extends BaseServiceManager {
     @Autowired
     private WebConfig webConfig;
     
+    @SuppressWarnings("unused")
     private ExecutorService SERVICE_THREAD_POOL;
     
     public ServiceManager() {
@@ -54,26 +54,13 @@ public class ServiceManager extends BaseServiceManager {
             ComponentService<T, BaseResponse> service = serviceReg.get(request.getTarget());
             if (service != null) {
                 LOGGER.debug("Perform {} request for {}", request.getType(), request.getTarget());
-                ServiceCallable<T> callable = new ServiceCallable<T>(service, request);
-                Future<BaseResponse> future = SERVICE_THREAD_POOL.submit(callable);
-                BaseResponse response;
-                try {
-                    response = future.get();
-                    if (response.isSuccess()) {
-                        return (R) response.getData();
-                    } else {
-                        throw new ServerException((MessageObject) response.getData());
-                    }
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                } catch (ExecutionException e) {
-                    Throwable cause = e.getCause();
-                    if(cause instanceof ServerException) {
-                        throw (ServerException) cause;
-                    } else {
-                        throw new ServerException(new MessageObject(CommonMessages.ERR_UNKNOWN_ERROR), cause);
-                    }
+                BaseResponse response = service.handle(request);
+                if (response.isSuccess()) {
+                    return (R) response.getData();
+                } else {
+                    throw new ServerException((MessageObject) response.getData());
                 }
+                
             }
             LOGGER.error("Cannot find service for {}", request.getTarget());
         }
@@ -81,7 +68,21 @@ public class ServiceManager extends BaseServiceManager {
         throw new ServerException(new MessageObject(CommonMessages.ERR_SERVICE_NOT_FOUND));
     }
     
-    private class ServiceCallable<T extends BaseRequest<?>> implements Callable<BaseResponse> {
+    @SuppressWarnings("unchecked")
+    public <T extends BaseRequest<?>, R> WebAsyncTask<R> asyncHandle(T request) {
+        if (request != null) {
+            ComponentService<T, BaseResponse> service = serviceReg.get(request.getTarget());
+            if (service != null) {
+                LOGGER.debug("Perform {} request for {}", request.getType(), request.getTarget());
+                return new WebAsyncTask<R>(webConfig.getKeepAliveTime() * 60 * 1000, new ServiceCallable<T, R>(service, request));
+            }
+            LOGGER.error("Cannot find service for {}", request.getTarget());
+        }
+        
+        throw new ServerException(new MessageObject(CommonMessages.ERR_SERVICE_NOT_FOUND));
+    }
+    
+    private class ServiceCallable<T extends BaseRequest<?>, R> implements Callable<R> {
 
         private ComponentService<T, BaseResponse> service;
         private T request;
@@ -92,9 +93,15 @@ public class ServiceManager extends BaseServiceManager {
             this.request = request;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
-        public BaseResponse call() throws Exception {
-            return service.handle(request);
+        public R call() throws Exception {
+            BaseResponse response = service.handle(request);
+            if (response.isSuccess()) {
+                return (R) response.getData();
+            } else {
+                throw new ServerException((MessageObject) response.getData());
+            }
         }
         
     }

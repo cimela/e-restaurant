@@ -24,7 +24,7 @@ public class SampleServiceImpl extends AbstractComponentService<SampleRequest, B
     public BaseResponse handle(SampleRequest request) {
         BaseResponse response = new BaseResponse();
         switch (request.getType()) {
-        case CREATE:
+        case GET_ONE:
             response.setSuccess(true);
             response.setData(new SampleVO());
             break;
