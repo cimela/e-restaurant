@@ -16,7 +16,7 @@
     <modules>
 		<module>sample</module>
 		<module>user-management</module>
-		<!--<module>authentication</module>-->
+		<module>i18n</module>
     </modules>
 	
 </project>

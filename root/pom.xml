@@ -108,6 +108,22 @@
 			
 			<dependency>
 				<groupId>${project.groupId}</groupId>
+				<artifactId>i18n-shared</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>i18n-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>i18n-webapp</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>user-management-shared</artifactId>
 				<version>${project.version}</version>
 			</dependency>
