@@ -16,7 +16,7 @@ public class SampleServiceImpl extends AbstractComponentService<SampleRequest, B
     protected static final String MSG_SAMPLE_SUCCESS = "sample.success";
     
     @Override
-    public String getTarget() {
+    public String getName() {
         return TARGET_SAMPLE;
     }
 

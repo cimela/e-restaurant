@@ -29,7 +29,7 @@ public class UserServiceImpl extends AbstractComponentService<UserRequest, BaseR
     private UserRepository userRepo;
     
     @Override
-    public String getTarget() {
+    public String getName() {
         return TARGET_USER;
     }
 

@@ -59,7 +59,7 @@ public class UserServiceImplTest {
     
     @Test
     public void testGetTarget() {
-        String target = userService.getTarget();
+        String target = userService.getName();
         assertEquals(target, TARGET);
     }
     

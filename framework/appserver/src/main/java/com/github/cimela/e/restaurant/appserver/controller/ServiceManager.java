@@ -39,7 +39,8 @@ public class ServiceManager extends BaseServiceManager {
         super();
     }
 
-    public ServiceManager(Collection<ComponentService<?, ?>> services) {
+    @SuppressWarnings("rawtypes")
+    public ServiceManager(Collection<ComponentService> services) {
         super(services);
     }
 
@@ -51,7 +52,7 @@ public class ServiceManager extends BaseServiceManager {
     @SuppressWarnings("unchecked")
     public <T extends BaseRequest<?>, R> R handle(T request) {
         if (request != null) {
-            ComponentService<T, BaseResponse> service = serviceReg.get(request.getTarget());
+            ComponentService<T, BaseResponse> service = registry.get(request.getTarget());
             if (service != null) {
                 LOGGER.debug("Perform {} request for {}", request.getType(), request.getTarget());
                 BaseResponse response = service.handle(request);
@@ -71,7 +72,7 @@ public class ServiceManager extends BaseServiceManager {
     @SuppressWarnings("unchecked")
     public <T extends BaseRequest<?>, R> WebAsyncTask<R> asyncHandle(T request) {
         if (request != null) {
-            ComponentService<T, BaseResponse> service = serviceReg.get(request.getTarget());
+            ComponentService<T, BaseResponse> service = registry.get(request.getTarget());
             if (service != null) {
                 LOGGER.debug("Perform {} request for {}", request.getType(), request.getTarget());
                 return new WebAsyncTask<R>(webConfig.getKeepAliveTime() * 60 * 1000, new ServiceCallable<T, R>(service, request));
