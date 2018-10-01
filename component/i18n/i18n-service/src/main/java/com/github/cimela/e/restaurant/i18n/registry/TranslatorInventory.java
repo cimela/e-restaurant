@@ -5,5 +5,8 @@ import com.github.cimela.e.restaurant.i18n.translation.Translator;
 
 @SuppressWarnings("rawtypes")
 public class TranslatorInventory extends AbstractRegistry<Translator> {
-
+    
+    public Translator getTranslator(Object clazz) {
+        
+    }
 }
