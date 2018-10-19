@@ -12,11 +12,11 @@ const generateData = () => {
     }
     */
     return {
-        // TODO: Update data to match sample user data above
-        users: _.times(100, n => ({
-            id: n,
-            name: faker.name.findName(),
-            avatar: faker.internet.avatar()
+        users: _.times(10, () => ({
+            username: faker.internet.userName(),
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName(),
+            email: faker.internet.email()
         }))
     }
 }
